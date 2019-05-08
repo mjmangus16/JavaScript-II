@@ -19,14 +19,18 @@ outer();
 // ==== Challenge 2: Create a counter function ====
 const counter = () => {
   // Return a function that when invoked increments and returns a counter variable.
-  return count++;
+  let count = 0;
+
+  function newCounter() {
+    return count++;
+  }
+
+  console.log(newCounter());
+  console.log(newCounter());
+  console.log(newCounter());
 };
 
-let count = 1;
-
-console.log(counter());
-console.log(counter());
-console.log(counter());
+counter();
 
 // Example usage: const newCounter = counter();
 // newCounter(); // 1
@@ -37,7 +41,21 @@ const counterFactory = () => {
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
+
+  let inc = 0;
+  let dec = 0;
+
+  function newCounter() {
+    return {
+      inc: inc++,
+      dec: dec--
+    };
+  }
+
+  console.log(newCounter());
+  console.log(newCounter());
+  console.log(newCounter());
+  console.log(newCounter());
 };
 
-let inc = 1;
-let dec = 1;
+counterFactory();
